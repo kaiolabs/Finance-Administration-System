@@ -6,5 +6,8 @@ int main()
 {
     setlocale(LC_ALL, "Portuguese");
 
+    int N; 
+
     printf("Olá Mundo");
+    scanf("¨%d", &N);
 }
