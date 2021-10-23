@@ -16,11 +16,17 @@ int main()
 
     int opi;
 
+<<<<<<< HEAD
     do{
     
     printf("\n-------------------------------------------------------\n\tSISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n-------------------------------------------------------\n");
 
     printf("\n\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatórios financeiros.\n | (4) - Folha de pagamento dos funcionários.\n | (5) - Lista de funcionários.\n | (6) - Estoque de produtos.\n | (7) - Fornecedores.\n |\n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+=======
+    printf("\n______________________________________________________\n\n\tSISTEMA DE ADIMINISTRAÃ‡Ã€O DE EMPRESAS\n______________________________________________________\n");
+
+    printf("\n\n | (1) - Controle de contas a receber.\n | (2) - Controle de contas a pagar.\n | (3) - Gera relatÃ³rios financeiros.\n | (4) - Folha de pagamento dos funcionÃ¡rios.\n | (5) - Lista de funcionÃ¡rios.\n | (6) - Estoque de produtos.\n | (7) - Fornecedores.\n |\n | INFORME O NÃšMERO DA OPÃ‡ÃƒO DESEJADA: ");
+>>>>>>> 314d7f1a669d332183075538ffa547d86c788707
     scanf("%d", &opi);
 
 
@@ -136,15 +142,26 @@ void Gera_relatorio (){
 }
 
 void Folha_de_pagamento(){
-
+    float sal_func, desc_inss, sal_liqui;
+    
+    sal_liqui = sal_func - desc_inss;
 }
 
 void Lista_de_funcionarios (){
-
+    int num_func;
+    
+    printf("\nDigite o numero de funcionarios que tem em sua empresa: \n");
+    scanf("%d", &num_func);
 }
 
 void Estoque_de_produtos (){
-
+    int cont=1000, venda_estoque, repor;
+    
+    printf("\nDigite quantos produtos vocÃª vendeu: n\");
+    scanf("%d", &prod_estoque);
+    venda_estoque = cont - prod_estoque;
+    repor = cont - venda_estoque;
+    
 }
 
 void Fornecedores (){
