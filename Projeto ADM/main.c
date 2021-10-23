@@ -15,18 +15,11 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     int opi;
-
-<<<<<<< HEAD
     do{
     
     printf("\n-------------------------------------------------------\n\tSISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n-------------------------------------------------------\n");
 
-    printf("\n\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatórios financeiros.\n | (4) - Folha de pagamento dos funcionários.\n | (5) - Lista de funcionários.\n | (6) - Estoque de produtos.\n | (7) - Fornecedores.\n |\n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
-=======
-    printf("\n______________________________________________________\n\n\tSISTEMA DE ADIMINISTRAÃ‡Ã€O DE EMPRESAS\n______________________________________________________\n");
-
-    printf("\n\n | (1) - Controle de contas a receber.\n | (2) - Controle de contas a pagar.\n | (3) - Gera relatÃ³rios financeiros.\n | (4) - Folha de pagamento dos funcionÃ¡rios.\n | (5) - Lista de funcionÃ¡rios.\n | (6) - Estoque de produtos.\n | (7) - Fornecedores.\n |\n | INFORME O NÃšMERO DA OPÃ‡ÃƒO DESEJADA: ");
->>>>>>> 314d7f1a669d332183075538ffa547d86c788707
+    printf("\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatórios financeiros.\n | (4) - Folha de pagamento dos funcionários.\n | (5) - Lista de funcionários.\n | (6) - Estoque de produtos.\n | (7) - Fornecedores.\n |\n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
     scanf("%d", &opi);
 
 
@@ -86,12 +79,12 @@ void Controle_pagar (){
 
     do{
 
-        printf("\n(1) - Conta de luz.\n(2) - Conta de água.\n(3) - Conta de aluguel.\n(4) - Conta fornecedores.\n(5) - Valor total das contas deste mês.\n(0) - Retorna ao menu anterior.\n\nInforme o número da opiçáo desejada: ");
+        printf("\n | (1) - Conta de luz.\n | (2) - Conta de água.\n | (3) - Conta de aluguel.\n | (4) - Conta fornecedores.\n | (5) - Valor total das contas deste mês.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d", &opi);
 
         if (opi == 1){
 
-            printf("\nInforme o valor da conta de luz deste mês: ");
+            printf("\n | Informe o valor da conta de luz deste mês: ");
             scanf("%f", &money1);
             soma1 = soma1 + money1;
             printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money1);
@@ -100,7 +93,7 @@ void Controle_pagar (){
 
             else if (opi == 2){
 
-                printf("\nInforme o valor da conta de água deste mês: ");
+                printf("\n | Informe o valor da conta de água deste mês: ");
                 scanf("%f", &money2);
                 soma2 = soma2 + money2;
                 printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money2);
@@ -109,7 +102,7 @@ void Controle_pagar (){
 
                 else if (opi == 3){
 
-                    printf("\nInforme o valor da conta de aluguel deste mês: ");
+                    printf("\n | Informe o valor da conta de aluguel deste mês: ");
                     scanf("%f", &money3);
                     soma3 = soma3 + money3;
                     printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money3);
@@ -118,7 +111,7 @@ void Controle_pagar (){
 
                     else if (opi == 4){
 
-                        printf("\nInforme o valor total a ser pago para os fornecedores deste mês: ");
+                        printf("\n | Informe o valor total a ser pago para os fornecedores deste mês: ");
                         scanf("%f", &money4);
                         soma4 = soma4 + money4;
                         printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money4);
