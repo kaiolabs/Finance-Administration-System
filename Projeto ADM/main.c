@@ -142,25 +142,15 @@ void Gera_relatorio (){
 }
 
 void Folha_de_pagamento(){
-    float sal_func, desc_inss, sal_liqui;
     
-    sal_liqui = sal_func - desc_inss;
 }
 
 void Lista_de_funcionarios (){
-    int num_func;
-    
-    printf("\nDigite o numero de funcionarios que tem em sua empresa: \n");
-    scanf("%d", &num_func);
+
 }
 
 void Estoque_de_produtos (){
-    int cont=1000, venda_estoque, repor;
-    
-    printf("\nDigite quantos produtos você vendeu: n\");
-    scanf("%d", &prod_estoque);
-    venda_estoque = cont - prod_estoque;
-    repor = cont - venda_estoque;
+
     
 }
 
