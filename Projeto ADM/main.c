@@ -6,7 +6,6 @@ void Controle_receber ();
 void Controle_pagar ();
 void Gera_relatorio ();
 void Folha_de_pagamento();
-void Lista_de_funcionarios ();
 void Estoque_de_produtos ();
 void Fornecedores ();
 
@@ -15,11 +14,12 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     int opi;
+    
     do{
     
     printf("\n-------------------------------------------------------\n\tSISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n-------------------------------------------------------\n");
 
-    printf("\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatórios financeiros.\n | (4) - Folha de pagamento dos funcionários.\n | (5) - Lista de funcionários.\n | (6) - Estoque de produtos.\n | (7) - Fornecedores.\n |\n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+    printf("\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatórios financeiros.\n | (4) - Folha de pagamento dos funcionários.\n | (5) - Estoque de produtos.\n | (6) - Fornecedores.\n |\n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
     scanf("%d", &opi);
 
 
@@ -45,17 +45,13 @@ int main()
                 }
                     else if (opi == 5){
 
-                        Lista_de_funcionarios ();
-
-                    }
-                        else if (opi == 6){
-
-                            Estoque_de_produtos ();
+                        Estoque_de_produtos ();
 
                         }
-                            else if(opi == 7){
 
-                                Fornecedores ();
+                        else if(opi == 6){
+
+                            Fornecedores ();
 
                             }
 
@@ -136,10 +132,6 @@ void Gera_relatorio (){
 
 void Folha_de_pagamento(){
     
-}
-
-void Lista_de_funcionarios (){
-
 }
 
 void Estoque_de_produtos (){
