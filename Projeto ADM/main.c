@@ -208,7 +208,8 @@ void Folha_de_pagamento(){
 void Lista_de_funcionarios (){
    int num_func = 0, i;
    static char nome_func[1000]; 
-    do{
+   printf("\n------------------------------------\n\tLista de funcionarios\n------------------------------------\n"); 
+   do{
         if(opi == 4){
                 printf("Digite a quantidade de funcionarios que você deseja adicionar: \n");
                 scanf("%d", &num_func);
