@@ -142,7 +142,7 @@ void Folha_de_pagamento(){
     printf("\n------------------------------------\n\tFolha de pagamentos\n------------------------------------\n");
 
     do{
-        printf("\n | (1) - Salário do funcionário.\n | (2) - Desconto do INSS.\n | (3) - Salário final dos Funcionarios.\n | (4) - Adicionar funcionários.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+        printf("\n | (1) - Salário do funcionário.\n | (2) - Desconto do INSS.\n | (3) - Salário final dos Funcionarios.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d", &opi);
 
 
