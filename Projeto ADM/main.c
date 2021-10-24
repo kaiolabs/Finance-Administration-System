@@ -135,70 +135,118 @@ void Gera_relatorio (){
 }
 
 void Folha_de_pagamento(){
-    static float sal, Inss_cal1, Inss_cal2, Inss_cal3, Inss_cal4, sal_liq1, sal_liq2, sal_liq3, sal_liq4;
-    int opi;
-    
-    printf("*********************\n");
-    printf("*Folha de pagamentos*\n");
-    printf("*********************\n");
-    
-   
+   static float sal, Inss_cal1, Inss_cal2, Inss_cal3, Inss_cal4, sal_liq1, sal_liq2, sal_liq3, sal_liq4;
+
+   int opi,
+
+    printf("\n------------------------------------\n\tFolha de pagamentos\n------------------------------------\n");
+
     do{
-        printf("\n |(1) - Salario do funcionário.\n |(2) - Desconto do INSS.\n |(3) - Salario final dos Funcionarios.\n |(4) - Adicionar funcionarios.\n |(0) - Retorna ao menu anterior.\n");
+        printf("\n | (1) - Salário do funcionário.\n | (2) - Desconto do INSS.\n | (3) - Salário final dos Funcionarios.\n | (4) - Adicionar funcionários.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d", &opi);
-        
-        if(opi==1){
-            printf("Digite o salrio do funcionario: ");
+
+
+        if(opi == 2){
+
+            printf("\n | Digite o salário do funcionário: ");
             scanf("%f", &sal);
-            }
-        if(opi==2){
-                else if(sal<=1100){
-                    Inss_cal1 = sal*7.5/100;
-                    printf("O salário do funcionario será de: %f", Inss_cal1);
+
+            if(sal<=1100){
+                Inss_cal1 = sal*7.5/100;
+                printf("\n | O desconto do INSS será de: R$ %.2f\n", Inss_cal1);
                 }
-                    else if(1100<=sal<=2.203){
-                        Inss_cal2=sal*9/100;
-                        printf("O salário do funcionario será de: %f", Inss_cal2);
+
+                else if(1100<=sal<=2.203){
+                    Inss_cal2=sal*9/100;
+                    printf("\n | O desconto do INSS será de: R$ %.2f\n", Inss_cal2);
                     }
-                        else if(2.203<=sal<=3.305){
-                            Inss_cal3=sal*12/100;
-                            printf("O salário do funcionario será de: %f", Inss_cal3);
+
+                    else if(2.203<=sal<=3.305){
+                        Inss_cal3=sal*12/100;
+                        printf("\n | O desconto do INSS será de: R$ %.2f\n", Inss_cal3);
                         }
-                            else if(3.305<=sal<=6.433){
-                                Inss_cal4=sal*14/100;
-                                printf("O salário do funcionario será de: %f", Inss_cal4);
+
+                        else if(3.305<=sal<=6.433){
+                            Inss_cal4=sal*14/100;
+                            printf("\n | O desconto do INSS será de: R$ %.2f\n", Inss_cal4);
+                            }
+
+        }
+
+        if(opi == 3){
+        printf("\n | Digite o salário do funcionário: ");
+        scanf("%f", &sal);
+            
+            if(Inss_cal1){
+                sal_liq1=sal-Inss_cal1;
+                printf("\n | O salário total do funcionário será de: R$ %.2f", sal_liq1);
+                }
+
+                else if(Inss_cal2){
+                    sal_liq2=sal-Inss_cal2;
+                    printf("\n | O salário total do funcionário será de: R$ %.2f", sal_liq2);
+                    }
+
+                    else if(Inss_cal3){
+                        sal_liq3=sal-Inss_cal3;
+                        printf("\n | O salário total do funcionário será de: R$ %.2f", sal_liq3);
+                        }
+
+                        else if(Inss_cal4){
+                            sal_liq4=sal-Inss_cal4;
+                            printf("\n | O salário total do funcionário será de: R$ %.2f", sal_liq4);
                             }
         }
-        if(opi==3){
-            if(Inss_cal1)[
-                sal_liq1=Inss_cal1-sal;
-                printf("O salario final do funcionario será de: %f", sal_liq1);
+
+        if(opi == 1){
+            printf("\n | Digite o salário do funcionário: ");
+            scanf("%f", &sal);
             }
-                else if(Inss_cal2){
-                    sal_liq2=Inss_cal2-sal;
-                    printf("O salario final do funcionario será de: %f", sal_liq2);
-                }
-                    else if(Inss_cal3){
-                        sal_liq3=Inss_cal3-sal;
-                        printf("O salario final do funcionario será de: %f", sal_liq3);
-                    }
-                        else if(Inss_cal4){
-                            sal_liq4=Inss_cal4-sal;
-                            printf("O salario final do funcionario será de: %f", sal_liq4);
-                        }
-        }
-              
-        
     }while(opi != 0);
 }
 
 void Lista_de_funcionarios (){
-
+   int num_func = 0, i;
+   static char nome_func[1000]; 
+    do{
+        if(opi == 4){
+                printf("Digite a quantidade de funcionarios que você deseja adicionar: \n");
+                scanf("%d", &num_func);
+                
+                for(i = 1; i<= num_func; i++){
+                    printf("Digite o nome do %d° funcionario: \n", i);
+                    scanf("%s", &nome_func);
+                    printf("nome de funcionarios: %s\n", num_func);
+                }
+                
+        }
+   }while(opi != 0);
 }
 
 void Estoque_de_produtos (){
-
-    
+    static produtos=1000, prod_vend, total_est, produtos_rep;
+    int opi;
+   
+    printf("\n------------------------------------\n\tEstoque de produtos\n------------------------------------\n");
+    do{
+        printf("\n | (1) - Quantidade máxima de produtos no estoque.\n | (2) - Quantos produtos total no estoque.\n | (3) - Quantos produtos precisam ser repostos.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+        scanf("%d", &opi);
+        
+        if(opi == 1){
+            printf("\n | A quantidade máxima de produtos no estoque são: %d\n", produtos);
+            }
+            else if(opi == 2){
+                printf("Digite a quantidade de produtos que a sua empresa vendeu: \n");
+                scanf("d", &prod_vend);
+            
+                total_est = produtos - prod_vend;
+                printf("A quantidade total de produtos no estoque é de: %d\n", total_est);
+            }
+                else if(opi == 3){
+                    produtos_rep = produtos - total_est;
+                    printf("O total de produtos a repor será de: %d\n", produtos_rep);
+                }
+    }while(opi != 0);
 }
 
 void Fornecedores (){
