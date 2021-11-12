@@ -2,55 +2,96 @@
 #include <stdlib.h>
 #include <locale.h>
 
+#define MAX 1000
+
+/*-------------------------------------------------------------------------------------------------------*/ 
+typedef struct{                
+       int   money;
+       char nome[30];
+}DADOS;
+
+typedef struct{
+       DADOS info[MAX];         
+       int f;                   
+}NODO;                          
+/*-------------------------------------------------------------------------------------------------------*/ 
+
+void cria_lista( int *fim );
+void entrada_dados( DADOS *aux );
+void inclui_lista( NODO *lista );
+void consulta_nome( NODO lista );
+
 void Controle_receber ();
 void Controle_pagar ();
 void Gera_relatorio ();
 void Folha_de_pagamento();
 void Estoque_de_produtos ();
+void Patrocinadores ();
 void Fornecedores ();
 
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
 
-    int opi;
+    int opi, CORA , Cora_cont = 0;
     
     do{
-    system("cls"); 
-    printf("\n-------------------------------------------------------\n\tSISTEMA DE ADIMINISTRA«¿O DE EMPRESAS\n-------------------------------------------------------\n");
-    printf("\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatÛrios financeiros.\n | (4) - Sal·rio dos funcionarios (folha de pagamento)\n | (5) - Estoque de produtos.\n | (6) - Fornecedores.\n |\n | INFORME O N⁄MERO DA OP«√O DESEJADA: ");
-    scanf("%d", &opi);
 
+        if(Cora_cont == 0){
+            printf("\n| ----------------------------------------------------------------------------------- |\n");
+            printf("\n ( ^ _ ^ ) - Ol√°, eu sou a CORA e estou aqui para ajudar voc√™ com o que precisa!\n\n ( ^ _ ^ ) - Vamos l√° ent√£o por favor digite o n√∫mero ( 1 ) para come√ßar: ");
+            scanf("%d", &CORA);
+            Cora_cont++;
 
-    switch (opi){
+        }else{
 
-        case 1:
-            Controle_receber ();
-            break;
-        case 2:
-            Controle_pagar ();
-            break;
-        case 3:
-            Gera_relatorio ();
-            break;
-        case 4:
-            Folha_de_pagamento ();
-            break;
-        case 5:
-            Estoque_de_produtos ();
-            break;
-        case 6:
-            Fornecedores ();
-            break;
+            system("cls"); 
+            printf("\n-------------------------------------------------------\n\tSISTEMA DE ADIMINISTRA√á√ÄO DE EMPRESAS\n-------------------------------------------------------\n");
+            printf("\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relat√≥rios financeiros.\n | (4) - Sal√°rio dos funcionarios (folha de pagamento)\n | (5) - Estoque de produtos.\n | (6) - Fornecedores.\n | (7) - Patrocinadores.\n |\n\n( ^ _ ^ ) - INFORME O N√öMERO DA OP√á√ÉO DESEJADA: ");
+            scanf("%d", &opi);
+
+            switch (opi){
+
+                case 1:
+                    Controle_receber (); // Development process
+                    break;
+                case 2:
+                    Controle_pagar (); // 80% complete
+                    break;
+                case 3:
+                    Gera_relatorio (); // Development process
+                    break;
+                case 4:
+                    Folha_de_pagamento (); // 95% complete
+                    break;
+                case 5:
+                    Estoque_de_produtos (); // Development process
+                    break;
+                case 6:
+                    Fornecedores (); // Development process
+                    break;
+
+                case 7:
+                    Patrocinadores (); // 95% complete
+                    break;
+                }
+
         }
-
     }while (opi != 0);
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o - Controle de contas a receber
+
 void Controle_receber (){
 
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o - Controle de contas a paga
 
 void Controle_pagar (){
 
@@ -61,60 +102,72 @@ void Controle_pagar (){
     do{
         system("cls"); 
         printf("\n-----------------------------------------------\n\tCONTROLE DE CONTAS A PAGA\n-----------------------------------------------\n");
-        printf("\n | (1) - Conta de luz.\n | (2) - Conta de ·gua.\n | (3) - Conta de aluguel.\n | (4) - Conta fornecedores.\n | (5) - Valor total das contas deste mÍs.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O N⁄MERO DA OP«√O DESEJADA: ");
+        printf("\n | (1) - Conta de luz.\n | (2) - Conta de √°gua.\n | (3) - Conta de aluguel.\n | (4) - Conta fornecedores.\n | (5) - Valor total das contas deste m√™s.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) INFORME O N√öMERO DA OP√á√ÉO DESEJADA: ");
         scanf("%d", &opi);
 
-        if (opi == 1){
+        switch (opi){
 
-            printf("\n | Informe o valor da conta de luz deste mÍs: ");
-            scanf("%f", &money1);
-            soma1 = soma1 + money1;
-            printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money1);
-            
+            case 1:{
+
+                printf("\n\n ( ^ _ ^ ) Informe o valor da conta de luz deste m√™s: ");
+                scanf("%f", &money1);
+                soma1 = soma1 + money1;
+                printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money1);
+
+                break;
             }
+            case 2:{
 
-            else if (opi == 2){
-
-                printf("\n | Informe o valor da conta de ·gua deste mÍs: ");
+                printf("\n\n ( ^ _ ^ ) Informe o valor da conta de √°gua deste m√™s: ");
                 scanf("%f", &money2);
                 soma2 = soma2 + money2;
                 printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money2);
 
-                }
+                break;
+            }
+            case 3:{
 
-                else if (opi == 3){
+                printf("\n\n ( ^ _ ^ ) Informe o valor da conta de aluguel deste m√™s: ");
+                scanf("%f", &money3);
+                soma3 = soma3 + money3;
+                printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money3);
 
-                    printf("\n | Informe o valor da conta de aluguel deste mÍs: ");
-                    scanf("%f", &money3);
-                    soma3 = soma3 + money3;
-                    printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money3);
+                break;
+            }
+            case 4:{
 
-                    }
+                printf("\n\n ( ^ _ ^ ) Informe o valor total a ser pago para os fornecedores deste m√™s: ");
+                scanf("%f", &money4);
+                soma4 = soma4 + money4;
+                printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money4);
 
-                    else if (opi == 4){
+                break;
+            }
+            case 5:{
 
-                        printf("\n | Informe o valor total a ser pago para os fornecedores deste mÍs: ");
-                        scanf("%f", &money4);
-                        soma4 = soma4 + money4;
-                        printf("\n-------------------------------------\nO valor informado foi : RS %.2f\n-------------------------------------\n", money4);
+                soma5 = soma1 + soma2 + soma3 + soma4;
+                printf("\n------------------------------------------------------\nO valor total das contas deste m√™s √© de : RS %.2f\n------------------------------------------------------\n", soma5);
 
-                        }
-                        else if (opi == 5){
-
-                            soma5 = soma1 + soma2 + soma3 + soma4;
-
-                            printf("\n------------------------------------------------------\nO valor total das contas deste mÍs È de : RS %.2f\n------------------------------------------------------\n", soma5);
-
-                            }
-
+                break;
+            }
+        
+        }
 
     }while(opi != 0);
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o -  Gera relat√≥rios financeiros
+
 void Gera_relatorio (){
 
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o - Sal√°rio dos funcionarios (folha de pagamento)
 
 void Folha_de_pagamento(){
 
@@ -125,44 +178,44 @@ void Folha_de_pagamento(){
     do{
         system("cls"); 
         printf("\n-------------------------------------------\n\t    Folha de pagamentos\n-------------------------------------------\n");
-        printf("\n | (1) - BonificaÁ„o.\n | (2) - Desconto do INSS.\n | (3) - Quantidade de funcion·rios.\n | (4) - Sal·rio bruto dos Funcionarios.\n | (5) - Sal·rio lÌquido dos Funcionarios.\n | (6) - Adicionar sal·rio dos funcion·rios.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O N⁄MERO DA OP«√O DESEJADA: ");
+        printf("\n | (1) - Bonifica√ß√£o.\n | (2) - Desconto do INSS.\n | (3) - Quantidade de funcion√°rios.\n | (4) - Sal√°rio bruto dos Funcionarios.\n | (5) - Sal√°rio l√≠quido dos Funcionarios.\n | (6) - Adicionar sal√°rio dos funcion√°rios.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O N√öMERO DA OP√á√ÉO DESEJADA: ");
         scanf("%d", &opi);
 
-        // Quantidade de funcion·rios.
+        // Quantidade de funcion√°rios.
 
         if(opi == 3){
 
                 do{
                     
-                    printf("\n | (1) - Adicionar  funcion·rios\n | (2) - Remove funcion·rios.\n | (3) - Quantidade de funcion·rios.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O N⁄MERO DA OP«√O DESEJADA: ");
+                    printf("\n | (1) - Adicionar  funcion√°rios\n | (2) - Remove funcion√°rios.\n | (3) - Quantidade de funcion√°rios.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O N√öMERO DA OP√á√ÉO DESEJADA: ");
                     scanf("%d", &opi_funcionarios);
 
                     if(opi_funcionarios == 1){
 
                         system("cls"); 
-                        printf("\n | Quantos funcion·rios vocÍ deseja adiconar: ");
+                        printf("\n | Quantos funcion√°rios voc√™ deseja adiconar: ");
                         scanf("%d", &add_funcionario);
 
                         quant_funcionarios = quant_funcionarios + add_funcionario;
 
                         system("cls");
-                        printf("\n | Foi adicionado %d funcion·rios.\n", add_funcionario);
+                        printf("\n | Foi adicionado %d funcion√°rios.\n", add_funcionario);
                         }
                         else if(opi_funcionarios == 2){
 
                             system("cls"); 
-                            printf("\n | Quantos funcion·rios vocÍ deseja remove: ");
+                            printf("\n | Quantos funcion√°rios voc√™ deseja remove: ");
                             scanf("%d", &remove_funcionario);
 
                             quant_funcionarios = quant_funcionarios - remove_funcionario;
 
                             system("cls");
-                            printf("\n | Foi removido %d funcion·rios.\n", remove_funcionario);
+                            printf("\n | Foi removido %d funcion√°rios.\n", remove_funcionario);
                             }
                             else if(opi_funcionarios == 3){
 
                                 system("cls"); 
-                                printf("\n | A quantidade de funcion·rios È: %d\n", quant_funcionarios);
+                                printf("\n | A quantidade de funcion√°rios √©: %d\n", quant_funcionarios);
 
                                 }
 
@@ -174,14 +227,14 @@ void Folha_de_pagamento(){
 
         }
 
-            // Adicionar sal·rio dos funcion·rios.
+            // Adicionar sal√°rio dos funcion√°rios.
 
             else if(opi == 6){
 
                 if(quant_funcionarios > 0){
                     system("cls");
                     for(x = 0; x < quant_funcionarios; x++){
-                            printf("\n | Digite o sal·rio do %d∞ funcion·rio: ", x+1);
+                            printf("\n | Digite o sal√°rio do %d¬∞ funcion√°rio: ", x+1);
                             scanf("%d", &sal[x]);
                             verificador_de_salario++;
                             }
@@ -189,18 +242,18 @@ void Folha_de_pagamento(){
                             system("cls"); 
                             printf("\n-----------------------------------------------------------------"); 
                             for(y = 0; y < quant_funcionarios; y++){
-                                printf("\n | O sal·rio do %d∞ funcion·rio È: %d", y+1, sal[y]);
+                                printf("\n | O sal√°rio do %d¬∞ funcion√°rio √©: %d", y+1, sal[y]);
                             }
                             printf("\n-----------------------------------------------------------------\n"); 
                             
                 }
                 else{
                     system("cls");
-                    printf("\n | Por favor primeiramente informe a quantidade de funcion·rios!\n");
+                    printf("\n | Por favor primeiramente informe a quantidade de funcion√°rios!\n");
                 }
                     
                 }
-                // BonificaÁ„o.
+                // Bonifica√ß√£o.
 
                 else if(opi == 1){
 
@@ -209,14 +262,14 @@ void Folha_de_pagamento(){
                         if(verificador_de_salario > 0){
 
                             system("cls");
-                            printf("\n | Informa em porcentagem a gratificaÁ„o para os funcion·rios: ");
+                            printf("\n | Informa em porcentagem a gratifica√ß√£o para os funcion√°rios: ");
                             scanf("%f", &bonus_porcentagem);
 
                             system("cls");
                             printf("\n-----------------------------------------------------------------"); 
                             for(z = 0; z < quant_funcionarios; z++){
                                 cal_bonus =  sal[z] * bonus_porcentagem / 100;
-                                printf("\n | A bonificaÁ„o do %d∞ funcion·rios ser· de: R$ %.2f", z+1, cal_bonus);
+                                printf("\n | A bonifica√ß√£o do %d¬∞ funcion√°rios ser√° de: R$ %.2f", z+1, cal_bonus);
                                 verificador_de_bonus++;
                                 }
                             printf("\n-----------------------------------------------------------------\n");
@@ -224,12 +277,12 @@ void Folha_de_pagamento(){
                          }
                          else{
                              system("cls");
-                             printf("\n | Por favor primeiramente adicionar o sal·rio dos funcion·rios!\n");
+                             printf("\n | Por favor primeiramente adicionar o sal√°rio dos funcion√°rios!\n");
                          }
                     }
                     else{
                         system("cls");
-                        printf("\n | Por favor primeiramente informe a quantidade de funcion·rios!\n");
+                        printf("\n | Por favor primeiramente informe a quantidade de funcion√°rios!\n");
                     }
                 }
                     // Desconto do INSS.
@@ -244,22 +297,22 @@ void Folha_de_pagamento(){
                                 printf("\n-----------------------------------------------------------------");
                                 for(z = 0; z < quant_funcionarios; z++){
                                     cal_inss =  sal[z] * desconto_inss / 100;
-                                    printf("\n | O desconto do INSS do %d∞ funcion·rios ser· de: R$ %.2f", z+1, cal_inss);
+                                    printf("\n | O desconto do INSS do %d¬∞ funcion√°rios ser√° de: R$ %.2f", z+1, cal_inss);
                                     }
                                 printf("\n-----------------------------------------------------------------\n");
 
                             }
                             else{
                                 system("cls");
-                                printf("\n | Por favor primeiramente adicionar o sal·rio dos funcion·rios!\n");
+                                printf("\n | Por favor primeiramente adicionar o sal√°rio dos funcion√°rios!\n");
                             }
                         }
                         else{
                             system("cls");
-                            printf("\n | Por favor primeiramente informe a quantidade de funcion·rios!\n");
+                            printf("\n | Por favor primeiramente informe a quantidade de funcion√°rios!\n");
                         }
                     }  
-                        //Sal·rio final dos Funcionarios.
+                        //Sal√°rio final dos Funcionarios.
                         else if(opi == 5){
 
                         if(quant_funcionarios > 0){
@@ -272,26 +325,26 @@ void Folha_de_pagamento(){
                                         printf("\n-----------------------------------------------------------------");
                                         for(z = 0; z < quant_funcionarios; z++){
                                             salario_final = sal[z] + ( sal[z] * bonus_porcentagem / 100) - (sal[z] * desconto_inss / 100);
-                                            printf("\n | O Sal·rio lÌquido dos Funcionarios %d∞ ser· de: R$ %.2f", z+1, salario_final);
+                                            printf("\n | O Sal√°rio l√≠quido dos Funcionarios %d¬∞ ser√° de: R$ %.2f", z+1, salario_final);
                                             }
                                         printf("\n-----------------------------------------------------------------\n");
                                 }
                                 else{
                                     system("cls");
-                                    printf("\n | Por favor primeiramente adicionar a bonificaÁ„o dos funcion·rios!\n");
+                                    printf("\n | Por favor primeiramente adicionar a bonifica√ß√£o dos funcion√°rios!\n");
                                 }
                             }
                             else{
                                 system("cls");
-                                printf("\n | Por favor primeiramente adicionar o sal·rio dos funcion·rios!\n");
+                                printf("\n | Por favor primeiramente adicionar o sal√°rio dos funcion√°rios!\n");
                             }
                         }
                         else{
                             system("cls");
-                            printf("\n | Por favor primeiramente informe a quantidade de funcion·rios!\n");
+                            printf("\n | Por favor primeiramente informe a quantidade de funcion√°rios!\n");
                         }
                     }
-                        // Sal·rio bruto
+                        // Sal√°rio bruto
                         else if(opi == 4){
 
                             if(verificador_de_salario > 0){
@@ -299,14 +352,14 @@ void Folha_de_pagamento(){
                                 system("cls"); 
                                 printf("\n-----------------------------------------------------------------");
                                 for(y = 0; y < quant_funcionarios; y++){
-                                    printf("\n | O sal·rio bruto do %d∞ funcion·rio È: R$ %d", y+1, sal[y]);
+                                    printf("\n | O sal√°rio bruto do %d¬∞ funcion√°rio √©: R$ %d", y+1, sal[y]);
                                     }
                                 printf("\n-----------------------------------------------------------------\n");
                                         
                             }
                             else{
                                 system("cls");
-                                printf("\n | Por favor primeiramente adicionar o sal·rio dos funcion·rios!\n");
+                                printf("\n | Por favor primeiramente adicionar o sal√°rio dos funcion√°rios!\n");
                             }
 
                             }            
@@ -315,11 +368,192 @@ void Folha_de_pagamento(){
     
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o - Estoque de produtos.
+
 void Estoque_de_produtos (){
 
     
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o - Patrocinadores
+
+void Patrocinadores (){
+
+    NODO lista;
+    int aux;
+
+    int opi, lista_cont = 0;
+
+    do{
+
+    printf("\n | ---------------------------------------------------------------------|\n ");
+    printf("\n | (1) - Cria lista de patrocinadores.\n | (2) - Adicionar patrocinadores.\n | (3) - Consulta patrocinador.\n | (4) - Mostra lista completa de patrocinadores.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) - INFORME O N√öMERO DA OP√á√ÇO DESEJADA: ");
+    scanf("%d", &opi);
+
+    switch (opi){
+
+    case 1:{
+
+        cria_lista( &lista.f );
+        lista_cont++;
+        break;
+    }
+
+    case 2:{
+
+        if( lista_cont == 0){
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
+        }else{
+            inclui_lista( &lista );
+        }
+        break;
+    }
+
+    case 3:{
+
+        if( lista_cont == 0){
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
+        }else{
+            consulta_nome ( lista );
+        }
+        break;
+    }
+
+    case 4:{
+
+        if( lista_cont == 0){
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
+        }else{
+            imprime_lista( lista );
+        }
+        break;
+    }
+    }
+
+   }while ( opi != 0 );
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√£o - Fornecedores
+
 void Fornecedores (){
 
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// Fun√ß√≥es relacionadas a banbo de dados em pilha 
+
+void cria_lista( int *fim ){
+
+    system("cls");
+    *fim = 0;    
+    printf("\n | ---------------------------------------------------------------------|\n ");
+    printf( "\n\t\t\t      Lista criada!\n" );
+
+    getchar();
+}
+
+void entrada_dados( DADOS *aux ){
+	system("cls");
+    printf("\n | Informe o nome do patrocinador: ");
+    fflush( stdin );
+    gets( aux->nome );
+
+    printf("\n | Digite o valor que vai s√© fornecido pelo de patrocinadore: ");
+    fflush( stdin );     
+    scanf( "%d", &aux-> money );
+}
+
+void inclui_lista( NODO *lista ){
+
+
+        int i;
+
+        if(lista -> f == MAX){
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf( "\n\t\t\t      Lista cheia! \n" );
+
+        }else{
+            DADOS aux;
+            entrada_dados( &aux );
+
+            for (i = lista -> f; i > 0; i--){
+                lista -> info[i] = lista -> info [i - 1];
+            }
+
+            lista -> info[0] = aux;
+            lista -> f++;
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf("\n\t\t     Registro inclu√≠do no in√≠cio!\n");
+        }
+     
+
+}
+
+void imprime_lista( NODO lista ){
+     
+    int i;
+
+    if( lista.f == 0 ){
+        system("cls");
+        printf("\n | ---------------------------------------------------------------------|\n ");
+        printf( "\n\t\t\t      Lista vazia! \n" );
+    }
+    else{
+        system("cls");
+        printf("\n | -------------------------- Relat√≥rio Geral --------------------------|\n ");
+	    for( i = 0 ; i < lista.f ; i++ ) { 
+	         printf( "\n\tPatrocinador: [%d]", i+1 );
+	         printf( "\t Nome: %s", lista.info[ i ].nome );
+             printf( "\t Valor: R$ %d\n", lista.info[ i ].money );
+             
+	    }
+    }    
+    getchar();
+}
+
+void consulta_nome( NODO lista ){
+
+        int i = 0;
+        char nome[30];
+
+        system("cls");
+        printf("\n | Informe o nome a ser consultado: ");
+        fflush(stdin);
+        gets(nome);
+
+        while ((i < lista.f) && strcmp(lista.info[i].nome, nome) != 0)
+        {
+            i++;
+        }
+        if(i >= lista.f){
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf("\n\t\t   Patrocinador n√£o encontrado na lista!\n");
+
+        }else{
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n ");
+            printf( "\n\t   Patrocinador:");
+	        printf( "\t Nome: %s", lista.info[ i ].nome );
+            printf( "\t Valor: R$ %d\n", lista.info[ i ].money );
+        }
+
+    }   
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------//
