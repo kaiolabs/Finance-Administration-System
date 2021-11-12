@@ -38,7 +38,8 @@ int main()
     do{
 
         if(Cora_cont == 0){
-            printf("\n| ----------------------------------------------------------------------------------- |\n");
+            printf("\n| ------------------------------------------------------------------------------------ |\n\n\t\t\tSISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n");
+            printf("\n| ------------------------------------------------------------------------------------ |\n");
             printf("\n ( ^ _ ^ ) - Olá, eu sou a CORA e estou aqui para ajudar você com o que precisa!\n\n ( ^ _ ^ ) - Vamos lá então por favor digite o número ( 1 ) para começar: ");
             scanf("%d", &CORA);
             Cora_cont++;
@@ -46,37 +47,38 @@ int main()
         }else{
 
             system("cls"); 
-            printf("\n-------------------------------------------------------\n\tSISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n-------------------------------------------------------\n");
-            printf("\n | (1) - Controle de dinheiro a recebe.\n | (2) - Controle de contas a paga.\n | (3) - Gera relatórios financeiros.\n | (4) - Salário dos funcionarios (folha de pagamento)\n | (5) - Estoque de produtos.\n | (6) - Fornecedores.\n | (7) - Patrocinadores.\n |\n\n( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+            printf("\n| ------------------------------------------------------- |\n\n\t  SISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n\n| ------------------------------------------------------- |\n");
+            printf("\n | (1) - Salário dos funcionarios (folha de pagamento).\n | (2) - Controle de dinheiro a recebe.\n | (3) - Gera relatórios financeiros.\n | (4) - Controle de contas a paga.\n | (5) - Estoque de produtos.\n | (6) - Patrocinadores.\n | (7) - Fornecedores.\n |\n\n( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
             scanf("%d", &opi);
 
             switch (opi){
 
                 case 1:
-                    Controle_receber (); // Development process
+                    Folha_de_pagamento (); // 95% complete
                     break;
                 case 2:
-                    Controle_pagar (); // 80% complete
+                    Controle_receber (); // Development process
                     break;
                 case 3:
                     Gera_relatorio (); // Development process
                     break;
                 case 4:
-                    Folha_de_pagamento (); // 95% complete
+                    Controle_pagar (); // 95% complete
                     break;
                 case 5:
                     Estoque_de_produtos (); // Development process
                     break;
                 case 6:
-                    Fornecedores (); // Development process
+                    Patrocinadores (); // 95% complete
                     break;
 
                 case 7:
-                    Patrocinadores (); // 95% complete
+                    Fornecedores (); // Development process
                     break;
                 }
 
         }
+
     }while (opi != 0);
 
 }
@@ -101,7 +103,7 @@ void Controle_pagar (){
 
     do{
         system("cls"); 
-        printf("\n-----------------------------------------------\n\tCONTROLE DE CONTAS A PAGA\n-----------------------------------------------\n");
+        printf("\n| ------------------------------------------------|\n\n\t    CONTROLE DE CONTAS A PAGA\n\n| ----------------------------------------------- |\n");
         printf("\n | (1) - Conta de luz.\n | (2) - Conta de água.\n | (3) - Conta de aluguel.\n | (4) - Conta fornecedores.\n | (5) - Valor total das contas deste mês.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d", &opi);
 
@@ -390,55 +392,56 @@ void Patrocinadores (){
 
     do{
 
-    printf("\n | ---------------------------------------------------------------------|\n ");
-    printf("\n | (1) - Cria lista de patrocinadores.\n | (2) - Adicionar patrocinadores.\n | (3) - Consulta patrocinador.\n | (4) - Mostra lista completa de patrocinadores.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÂO DESEJADA: ");
-    scanf("%d", &opi);
+        system("cls");
+        printf("\n | ---------------------------------------------------------------------|\n\n\t\t\t     PATROCINADORES\n\n | ---------------------------------------------------------------------|\n");
+        printf("\n | (1) - Cria lista de patrocinadores.\n | (2) - Adicionar patrocinadores.\n | (3) - Consulta patrocinador.\n | (4) - Mostra lista completa de patrocinadores.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÂO DESEJADA: ");
+        scanf("%d", &opi);
 
-    switch (opi){
+        switch (opi){
 
-    case 1:{
+        case 1:{
 
-        cria_lista( &lista.f );
-        lista_cont++;
-        break;
-    }
-
-    case 2:{
-
-        if( lista_cont == 0){
-            system("cls");
-            printf("\n | ---------------------------------------------------------------------|\n ");
-            printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
-        }else{
-            inclui_lista( &lista );
+            cria_lista( &lista.f );
+            lista_cont++;
+            break;
         }
-        break;
-    }
 
-    case 3:{
+        case 2:{
 
-        if( lista_cont == 0){
-            system("cls");
-            printf("\n | ---------------------------------------------------------------------|\n ");
-            printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
-        }else{
-            consulta_nome ( lista );
+            if( lista_cont == 0){
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n ");
+                printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
+            }else{
+                inclui_lista( &lista );
+            }
+            break;
         }
-        break;
-    }
 
-    case 4:{
+        case 3:{
 
-        if( lista_cont == 0){
-            system("cls");
-            printf("\n | ---------------------------------------------------------------------|\n ");
-            printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
-        }else{
-            imprime_lista( lista );
+            if( lista_cont == 0){
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n ");
+                printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
+            }else{
+                consulta_nome ( lista );
+            }
+            break;
         }
-        break;
-    }
-    }
+
+        case 4:{
+
+            if( lista_cont == 0){
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n ");
+                printf("\n   ( ^ _ ^ ) - Por favor primeiramente  crie a lista de patrocinadores!\n");
+            }else{
+                imprime_lista( lista );
+            }
+            break;
+        }
+        }
 
    }while ( opi != 0 );
 
