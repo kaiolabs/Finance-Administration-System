@@ -59,12 +59,15 @@ void consulta_nome( NODO lista );
 void entrada_fornecedores( FORNECEDOR *aux );
 void inclui_lista_fornecedores( NODO1 *lista );
 void imprime_lista_fornecedores( NODO1 lista );
+void cadastraProduto(struct cadastra produto);
+void buscar();
+void alterar ();
+void remover ();
 
 /*-------------------------------------------------------------------------------------------------------*/
 
 // Funçóes do menu principal
 
-void Controle_receber ();
 void Controle_pagar ();
 void Folha_de_pagamento();
 void Estoque_de_produtos ();
