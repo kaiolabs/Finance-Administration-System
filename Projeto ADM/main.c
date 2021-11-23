@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
 
 #define MAX 1001
+#define MAXC 100
 
 /*-------------------------------------------------------------------------------------------------------*/ 
 
-// Structs usados nas funçoés de banco de dados
+// Structs usados nas funçoés de banco de dados em pilha
 
 typedef struct{
     int   money;
@@ -26,6 +28,17 @@ typedef struct{
     FORNECEDOR info[MAX];
     int f;           
 }NODO1;
+
+struct cadastra{
+    int codigop,codigof,quantidade;
+    char nome[30];
+    char fornecedor[30];
+    float preco;
+};
+
+struct cadastra cad[MAXC];
+    int quantp=0;
+
 
 /*-------------------------------------------------------------------------------------------------------*/ 
 
@@ -71,7 +84,7 @@ int main()
         if(Cora_cont == 0){
             printf("\n| ------------------------------------------------------------------------------------ |\n\n\t\t\tSISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n");
             printf("\n| ------------------------------------------------------------------------------------ |\n");
-            printf("\n ( ^ _ ^ ) - Olá, eu sou a CORA e estou aqui para ajudar você com o que precisa!\n\n ( ^ _ ^ ) - Vamos lá então por favor digite o número ( 1 ) para começar: ");
+            printf("\n ( ^ _ ^ ) - Olá, sou a CORA e estou aqui para ajuda você com o que precisa!\n\n ( ^ _ ^ ) - Vamos lá então por favor digite o número ( 1 ) para começar: ");
             scanf("%d", &CORA);
             Cora_cont++;
 
@@ -79,25 +92,25 @@ int main()
 
             system("cls"); 
             printf("\n| ------------------------------------------------------- |\n\n\t  SISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n\n| ------------------------------------------------------- |\n");
-            printf("\n | (1) - Salário dos funcionarios (folha de pagamento).\n | (2) - Controle de contas a paga.\n | (3) - Estoque de produtos.\n | (4) - Patrocinadores.\n | (5) - Fornecedores.\n |\n\n( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+            printf("\n | (1) - Salário dos funcionarios (folha de pagamento).\n | (2) - Controle de contas a paga.\n | (3) - Estoque de produtos.\n | (4) - Patrocinadores.\n | (5) - Fornecedores.\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
             scanf("%d", &opi);
 
             switch (opi){
 
                 case 1:
-                    Folha_de_pagamento (); // 95% complete
+                    Folha_de_pagamento ();
                     break;
                 case 2:
-                    Controle_pagar (); // 95% complete
+                    Controle_pagar ();
                     break;
                 case 3:
-                    Estoque_de_produtos (); // Development process
+                    Estoque_de_produtos ();
                     break;
                 case 4:
-                    patrocinadores (); // 95% complete
+                    patrocinadores ();
                     break;
                 case 5:
-                    Fornecedores (); // 95% complete
+                    Fornecedores ();
                     break;
 
                 }
@@ -120,7 +133,7 @@ void Controle_pagar (){
     do{
 
         printf("\n | ---------------------------------------------------------------------|\n");
-        printf("\n | (1) - Conta de luz.\n | (2) - Conta de água.\n | (3) - Conta de aluguel.\n | (4) - Valor total das contas deste mês.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+        printf("\n | (1) - Conta de luz.\n | (2) - Conta de água.\n | (3) - Conta de aluguel.\n | (4) - Valor total das contas deste mês.\n | (0) - Retorna ao menu anterior.\n\n ( ^ _ ^ ) INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d", &opi);
 
         switch (opi){
@@ -199,7 +212,7 @@ void Folha_de_pagamento(){
                 do{
 
                     printf("\n | -------------------------------------------------------------------------------|\n");
-                    printf("\n | (1) - Adicionar  funcionários\n | (2) - Remove funcionários.\n | (3) - Quantidade de funcionários.\n | (0) - Retorna ao menu anterior.\n | \n | INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+                    printf("\n | (1) - Adicionar  funcionários\n | (2) - Remove funcionários.\n | (3) - Quantidade de funcionários.\n | (0) - Retorna ao menu anterior.\n | \n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
                     scanf("%d", &opi_funcionarios);
 
                     if(opi_funcionarios == 1){
@@ -340,8 +353,217 @@ void Folha_de_pagamento(){
 
 // Função - Estoque de produtos.
 
+void cadastraProduto(struct cadastra produto){
+    cad[quantp] = produto;
+    quantp++;
+}
+
+struct cadastra leDados(){
+    char xx,qp[10];
+    int w,i,c, qtd;
+    float preco;
+    do{
+        xx='n';
+        fflush(stdin);
+        system("cls");
+        printf("\n | ---------------------------------------------------------------------|\n");
+        printf("\n | Digite o nome do produto: ");
+        scanf("%s",cad[quantp].nome);
+        cad[quantp].codigop = 1 + cad[quantp -1].codigop ;
+        printf("\n | Código do produto é: ( %d )\n",cad[quantp].codigop);
+        do{
+            c=0;w=0;
+            fflush(stdin);
+            printf("\n | Quantidade de produtos para o estoque: ");
+            scanf("%d",&qtd);
+            cad[quantp].quantidade = qtd;
+
+        }while( w );
+        fflush(stdin);
+        printf("\n | Nome do fornecedor: ");
+        scanf("%s",cad[quantp].fornecedor);
+        cad[quantp].codigof = 1 +  cad[quantp -1].codigof;
+        printf("\n | Código do fornecedor %s é: ( %d )\n",cad[quantp].fornecedor, cad[quantp].codigof);
+        w=1;
+        do{
+            w=0;c=0;
+            fflush(stdin);
+            printf("\n | Digite o preço do produto: ");
+            scanf("%f",&preco);
+            cad[quantp].preco = preco;
+
+        }while( w );
+        fflush(stdin);
+        quantp++;
+        printf("\n | Quer cadastrar outro produto? Por favor digite S/N: ");
+        xx=getch();
+
+    }while(xx=='s');
+    system("CLS");
+}
+
+void buscar(){
+
+    int i,opcao;
+    char nome[30];
+
+        system("cls"); 
+        printf("\n | ---------------------------------------------------------------------|\n\n\t\t\t   MENU DE BUSCA\n");
+
+        do{
+            printf("\n | ---------------------------------------------------------------------|\n");
+            printf("\n | (1) - Mostrar lista de produtos.\n | (2) - Buscar pelo nome produto ou pelo nome do fornecedor.\n | (3) - Retorna ao menu anterior.\n\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+            scanf("%d",&opcao);
+            system("CLS");
+            switch(opcao){
+                case 1:
+                    printf("\n\t\t    Lista de produtos cadastrados \n");
+                    if(quantp != 0){
+                        for(i=0;i<quantp;i++){
+                            printf("\n | ---------------------------------------------------------------------|\n");
+                            printf("\n\t\t\t       PRODUTO %d \n\n",i+1);
+                            printf("\t\t     Nome do produto:       %s\n",cad[i].nome);
+                            printf("\t\t     Código do produto:     %d\n",cad[i].codigop);
+                            printf("\t\t     Quantidade no estoque: %d\n",cad[i].quantidade);
+                            printf("\t\t     Nome do fornecedor:    %s\n",cad[i].fornecedor);
+                            printf("\t\t     Código do fornecedor:  %d\n",cad[i].codigof);
+                            printf("\t\t     Preço do produto:      %.2f\n",cad[i].preco);
+                        }
+                    }else{
+                        printf("\n | ---------------------------------------------------------------------|\n");
+                        printf("\n\t\t\t      Lista vazia!\n");
+                    }
+                    break;
+
+                case 2:
+                    printf("\n | ---------------------------------------------------------------------|\n");
+                    printf("\n | Digite o nome do produto ou nome do fornecedor: ");
+                    scanf("%s",&nome);
+                    for(i=0;i<quantp;i++){
+                        if((strcmp (nome, cad[i].nome) == 0) || strcmp (nome, cad[i].fornecedor) == 0) {
+
+                            system("cls"); 
+                            printf("\n | ---------------------------------------------------------------------|\n\n");
+                            printf("\t\t     Nome do produto:       %s\n",cad[i].nome);
+                            printf("\t\t     Código do produto:     %d\n",cad[i].codigop);
+                            printf("\t\t     Quantidade no estoque: %d\n",cad[i].quantidade);
+                            printf("\t\t     Nome do fornecedor:    %s\n",cad[i].fornecedor);
+                            printf("\t\t     Código do fornecedor:  %d\n",cad[i].codigof);
+                            printf("\t\t     Preço do produto:      %.2f\n",cad[i].preco);
+                        }
+                    }
+                    break;
+            }
+        }while(opcao!=3);
+        system("CLS");
+}
+
+void alterar (){
+    int i, atNome,atE, atF, atP;
+    char nome[50];
+
+    fflush(stdin);
+    system("CLS");
+    printf("\n | ---------------------------------------------------------------------|\n");
+    printf("\n | Digite o nome do produto que deseja alterar: ");
+    scanf("%s",&nome);
+    for(i=0;i<quantp;i++){
+        if(strcmp (nome, cad[i].nome) == 0){
+            fflush(stdin);
+            printf("\n | Atualizar nome? SIM = 1 NÃO = 2: ");
+            scanf("%d", &atNome);
+            if(atNome == 1){
+                printf("\n | Novo nome do produto: ");
+                scanf("%s",&cad[i].nome);
+            }
+
+            printf("\n | Atualizar quantide de produtos para o estoque? SIM = 1 NÃO = 2: ");
+            scanf("%d", &atE);
+            if(atE == 1){
+                printf("\n | Nova quantidade de produtos para o estoque: ");
+                scanf("%d",&cad[i].quantidade);
+                fflush(stdin);
+            }
+
+            printf("\n | Atualizar nome do fornecedor? SIM = 1 NÃO = 2: ");
+            scanf("%d",&atF);
+            if(atF == 1){
+                printf("\n | Novo nome do fornecedor: ");
+                scanf("%s",&cad[i].fornecedor);
+                cad[i].codigof = 1 + cad[i +1].codigof;
+                printf("\n | Código do novo fornecedor %s é %d.\n",cad[i].fornecedor, cad[i].codigof);
+                fflush(stdin);
+            }
+            printf("\n | Atualizar preço do produto? SIM = 1 NÃO = 2: ");
+            scanf("%d", &atP);
+            if(atP == 1){
+                printf("\n | Digite o novo preço do produto: ");
+                scanf("%f",&cad[i].preco);
+                fflush(stdin);
+            }
+        }
+    }
+
+}
+
+void remover () {
+
+	int i,j,cont=0;
+	int codigo_busc;
+
+    system("cls"); 
+    printf("\n | ---------------------------------------------------------------------|\n");
+	printf("\n | Informe o código do produto que se deseja excluir: ");
+	scanf("%i",&codigo_busc);
+	for(i = 0 ; i < quantp ; i++){
+		if (cad[i].codigop == codigo_busc) {          // Compara o codigo relacionado e exclui
+            for(j=i;j<quantp;j++){
+			    cad[j] = cad[j+1];                    // Realoca a Memória
+            }
+            quantp--;                         // decrementa o indice do vetor para que ocupe o cadastro removido
+            cont++;
+            break;
+		}
+	}
+	if(cont>0){
+        printf ("\n | PRODUTO EXCLUIDO COM SUCESSO !\n");
+        printf ("\n | Pressione ENTER para continuar !\n");
+        setbuf(stdin,NULL);
+        getchar ();
+        system ("cls");
+    }else {
+        printf("\n | Esse número de código não existe\n");
+    }
+}
+
 void Estoque_de_produtos (){
 
+    int opcao;
+    srand(time (NULL));
+    struct cadastra novoProduto;
+
+    do{
+        system("cls");
+        printf("\n | ---------------------------------------------------------------------|\n\n\t\t\t ESTOQUE DE PRODUTOS\n");
+        printf("\n | ---------------------------------------------------------------------|\n");
+        printf("\n | (1) - Cadastrar produto.\n | (2) - Buscar produto.\n | (3) - Alterar produto.\n | (4) - Remover produto.\n | (5) - Retorna ao menu anterior.\n\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+        scanf("%d",&opcao);
+
+        switch(opcao){
+            case 1:
+                novoProduto=leDados();
+                break;
+            case 2:
+                buscar();
+                break;
+            case 3:
+                alterar();
+                break;
+            case 4:
+            	remover();
+            	break;
+        }
+    }while(opcao!=5);
     
 }
 
@@ -361,7 +583,7 @@ void patrocinadores (){
 
     do{
         printf("\n | ---------------------------------------------------------------------|\n");
-        printf("\n | (1) - Cria lista de patrocinadores.\n | (2) - Adicionar patrocinador.\n | (3) - Consulta patrocinador.\n | (4) - Mostra lista completa de patrocinadores.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÂO DESEJADA: ");
+        printf("\n | (1) - Cria lista de patrocinadores.\n | (2) - Adicionar patrocinador.\n | (3) - Consulta patrocinador.\n | (4) - Mostra lista completa de patrocinadores.\n | (0) - Retorna ao menu anterior.\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÂO DESEJADA: ");
         scanf("%d", &opi);
 
         switch (opi){
@@ -417,7 +639,7 @@ void Fornecedores (){
 
     do{
         printf("\n | ---------------------------------------------------------------------|\n");
-        printf("\n | (1) - Cria lista de fornecedores.\n | (2) - Adicionar fornecedor.\n | (3) - Mostra lista completa de fornecedores.\n | (0) - Retorna ao menu anterior.\n | \n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÂO DESEJADA: ");
+        printf("\n | (1) - Cria lista de fornecedores.\n | (2) - Adicionar fornecedor.\n | (3) - Mostra lista completa de fornecedores.\n | (0) - Retorna ao menu anterior.\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÂO DESEJADA: ");
         scanf("%d", &opi);
 
         switch (opi){
@@ -448,9 +670,6 @@ void Fornecedores (){
 
 }
 
-void venda_produtos(){
-    
-}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 // Funçóes relacionadas a banbo de Patrocinadores em pilha - patrocinadores 
