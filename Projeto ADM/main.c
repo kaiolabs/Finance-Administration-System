@@ -95,7 +95,7 @@ int main()
 
             system("cls"); 
             printf("\n| ------------------------------------------------------- |\n\n\t  SISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n\n| ------------------------------------------------------- |\n");
-            printf("\n | (1) - Salário dos funcionarios (folha de pagamento).\n | (2) - Controle de contas a paga.\n | (3) - Estoque de produtos.\n | (4) - Patrocinadores.\n | (5) - Fornecedores.\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+            printf("\n | (1) - Salário dos funcionarios (folha de pagamento).\n | (2) - Controle de contas a paga.\n | (3) - Estoque de produtos.\n | (4) - Patrocinadores.\n | (5) - Fornecedores.\n | (0) - Encerrar.\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
             scanf("%d", &opi);
 
             switch (opi){
@@ -107,6 +107,7 @@ int main()
                     Controle_pagar ();
                     break;
                 case 3:
+                    system("cls");
                     Estoque_de_produtos ();
                     break;
                 case 4:
@@ -193,8 +194,8 @@ void Controle_pagar (){
 
 void Folha_de_pagamento(){
 
-    int opi, opi_funcionarios, add_funcionario, remove_funcionario, quant_funcionarios = 0, verificador_de_bonus = 0, sal[quant_funcionarios], verificador_de_salario = 0, x, y, z;
-    float cal_bonus,  cal_inss, bonus_porcentagem, salario_final;
+    int opi, opi_funcionarios, add_funcionario, remove_funcionario, quant_funcionarios = 0, verificador_de_bonus = 0, verificador_de_salario = 0, x, y, z;
+    float sal[quant_funcionarios], cal_bonus,  cal_inss, bonus_porcentagem, salario_final;
     float desconto_inss = 7.5;
 
     system("cls");
@@ -257,14 +258,14 @@ void Folha_de_pagamento(){
                     system("cls");
                     for(x = 0; x < quant_funcionarios; x++){
                             printf("\n | Digite o salário do %d° funcionário: ", x+1);
-                            scanf("%d", &sal[x]);
+                            scanf("%f", &sal[x]);
                             verificador_de_salario++;
                             }
 
                             system("cls"); 
                             printf("\n | -------------------------------------------------------------------------------|\n");
                             for(y = 0; y < quant_funcionarios; y++){
-                                printf("\n\t\t\tO salário do %d° funcionário é: %d\n", y+1, sal[y]);
+                                printf("\n\t\t\tO salário do %d° funcionário é: %.2f\n", y+1, sal[y]);
                             }
                             
                     }else{ notifi_informa_quantidade_funcionarios(); } 
@@ -366,6 +367,7 @@ struct cadastra leDados(){
     int w,i,c, qtd;
     float preco;
     do{
+        system("CLS");
         xx='n';
         fflush(stdin);
         system("cls");
@@ -398,11 +400,14 @@ struct cadastra leDados(){
         }while( w );
         fflush(stdin);
         quantp++;
-        printf("\n | Quer cadastrar outro produto? Por favor digite S/N: ");
+        system("CLS");
+        printf("\n | ---------------------------------------------------------------------|\n");
+        printf("\n\t\t     Produto cadastrado com sucesso!\n");
+        printf("\n | ---------------------------------------------------------------------|\n");
+        printf("\n\n | Quer cadastrar outro produto? Por favor digite S/N: ");
         xx=getch();
 
     }while(xx=='s');
-    system("CLS");
 }
 
 void buscar(){
@@ -415,7 +420,7 @@ void buscar(){
 
         do{
             printf("\n | ---------------------------------------------------------------------|\n");
-            printf("\n | (1) - Mostrar lista de produtos.\n | (2) - Buscar pelo nome produto ou pelo nome do fornecedor.\n | (3) - Retorna ao menu anterior.\n\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+            printf("\n | (1) - Mostrar lista de produtos.\n | (2) - Buscar pelo nome produto ou pelo nome do fornecedor.\n | (0) - Retorna ao menu anterior.\n\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
             scanf("%d",&opcao);
             system("CLS");
             switch(opcao){
@@ -457,8 +462,8 @@ void buscar(){
                     }
                     break;
             }
-        }while(opcao!=3);
-        system("CLS");
+        }while(opcao!=0);
+
 }
 
 void alterar (){
@@ -467,8 +472,8 @@ void alterar (){
 
     fflush(stdin);
     system("CLS");
-    printf("\n | ---------------------------------------------------------------------|\n");
-    printf("\n | Digite o nome do produto que deseja alterar: ");
+    printf("\n | ---------------------------------------------------------------------------------------|\n");
+    printf("\n | Digite o nome do produto que deseja alterar ou ( 0 ) para cncelar a alteração: ");
     scanf("%s",&nome);
     for(i=0;i<quantp;i++){
         if(strcmp (nome, cad[i].nome) == 0){
@@ -549,7 +554,7 @@ void Estoque_de_produtos (){
         system("cls");
         printf("\n | ---------------------------------------------------------------------|\n\n\t\t\t ESTOQUE DE PRODUTOS\n");
         printf("\n | ---------------------------------------------------------------------|\n");
-        printf("\n | (1) - Cadastrar produto.\n | (2) - Buscar produto.\n | (3) - Alterar produto.\n | (4) - Remover produto.\n | (5) - Retorna ao menu anterior.\n\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+        printf("\n | (1) - Cadastrar produto.\n | (2) - Buscar produto.\n | (3) - Alterar produto.\n | (4) - Remover produto.\n | (0) - Retorna ao menu anterior.\n\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d",&opcao);
 
         switch(opcao){
@@ -566,7 +571,7 @@ void Estoque_de_produtos (){
             	remover();
             	break;
         }
-    }while(opcao!=5);
+    }while(opcao!=0);
     
 }
 
