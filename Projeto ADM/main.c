@@ -1,3 +1,17 @@
+/*
+
+SISTEMA DE ADMINISTRAÇÃO DE UMA EMPRESA
+
+ALUNOS
+_____________________________________
+
+Isabelle Pinto Vargas 
+Kaio Vinícius de Paiva Rodrigues 
+Murilo Tatsch Pereira 
+Tiago da Rosa Gularte 
+_____________________________________
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -11,7 +25,7 @@
 // Structs usados nas funçoés de banco de dados em pilha
 
 typedef struct{
-    int   money;
+    float   money;
     char nome[MAX];
 }PATROCINADOR;
 
@@ -42,7 +56,7 @@ struct cadastra cad[MAXC];
 
 /*-------------------------------------------------------------------------------------------------------*/ 
 
-// Funçóes notificações
+// Funçóes de notificação - Feitas para evitar repetição de código.
 
 void notifi_ciar_lista();
 void notifi_informa_salario_funcionarios();
@@ -92,7 +106,7 @@ int main()
             Cora_cont++;
 
         }else{
-
+            
             system("cls"); 
             printf("\n| ------------------------------------------------------- |\n\n\t  SISTEMA DE ADIMINISTRAÇÀO DE EMPRESAS\n\n| ------------------------------------------------------- |\n");
             printf("\n | (1) - Salário dos funcionarios (folha de pagamento).\n | (2) - Controle de contas a paga.\n | (3) - Estoque de produtos.\n | (4) - Patrocinadores.\n | (5) - Fornecedores.\n | (0) - Encerrar.\n\n ( ^ _ ^ ) - INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
@@ -128,8 +142,9 @@ int main()
 
 void Controle_pagar (){
 
-    int opi;
-    float money1 = 0, money2 = 0, money3 = 0, soma_total = 0;
+    int opi, i, j, L = 3, C = 1 ;
+    float soma_total,  lista[L][C];
+    lista[0][0] = 0, lista[1][0] = 0, lista[2][0] = 0;
 
     system("cls");
     printf("\n | ---------------------------------------------------------------------|\n\n\t\t\tCONTROLE DE CONTAS A PAGA\n");
@@ -137,7 +152,7 @@ void Controle_pagar (){
     do{
 
         printf("\n | ---------------------------------------------------------------------|\n");
-        printf("\n | (1) - Conta de luz.\n | (2) - Conta de água.\n | (3) - Conta de aluguel.\n | (4) - Valor total das contas deste mês.\n | (0) - Retorna ao menu anterior.\n\n ( ^ _ ^ ) INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
+        printf("\n | (1) - Conta de luz.\n | (2) - Conta de água.\n | (3) - Conta de aluguel.\n | (4) - Relatorio de contas.\n | (5) - Valor total das contas deste mês..\n | (0) - Retorna ao menu anterior.\n\n ( ^ _ ^ ) INFORME O NÚMERO DA OPÇÃO DESEJADA: ");
         scanf("%d", &opi);
 
         switch (opi){
@@ -145,41 +160,62 @@ void Controle_pagar (){
             case 1:{
                 
                 system("cls");
-                printf("\n\n ( ^ _ ^ ) Informe o valor da conta de luz deste mês: ");
-                scanf("%f", &money1);
+                printf("\n\n ( ^ _ ^ ) - Informe o valor da conta de luz deste mês: ");
+                scanf("%f", &lista[0][0]);
                 system("cls");
                 printf("\n | ---------------------------------------------------------------------|\n");
-                printf("\n\t\t  O valor informado foi : RS %.2f\n", money1);
+                printf("\n\t\t  O valor informado foi : RS %.2f\n", lista[0][0]);
                 break;
             }
             case 2:{
 
                 system("cls");
-                printf("\n\n ( ^ _ ^ ) Informe o valor da conta de água deste mês: ");
-                scanf("%f", &money2);
+                printf("\n\n ( ^ _ ^ ) - Informe o valor da conta de água deste mês: ");
+                scanf("%f", &lista[1][0]);
                 system("cls");
                 printf("\n | ---------------------------------------------------------------------|\n");
-                printf("\n\t\t  O valor informado foi : RS %.2f\n", money2);
+                printf("\n\t\t  O valor informado foi : RS %.2f\n", lista[1][0]);
                 break;
             }
             case 3:{
 
                 system("cls");
-                printf("\n\n ( ^ _ ^ ) Informe o valor da conta de aluguel deste mês: ");
-                scanf("%f", &money3);
+                printf("\n\n ( ^ _ ^ ) - Informe o valor da conta de aluguel deste mês: ");
+                scanf("%f", &lista[2][0]);
                 system("cls");
                 printf("\n | ---------------------------------------------------------------------|\n");
-                printf("\n\t\t  O valor informado foi : RS %.2f\n", money3);
+                printf("\n\t\t  O valor informado foi : RS %.2f\n", lista[2][0]);
                 break;
             }
             
             case 4:{
 
-                soma_total = money1 + money2 + money3;
                 system("cls");
                 printf("\n | ---------------------------------------------------------------------|\n");
-                printf("\n\t   O valor total das contas deste mês é de : RS %.2f\n", soma_total);
+                printf("\n\t\t   Conta de luz : RS %.2f\n", lista[0][0]) ;
+                printf("\n\t\t   Conta de água : RS %.2f\n", lista[1][0]) ;
+                printf("\n\t\t   Conta de aluguel : RS %.2f\n", lista[2][0]) ;
+
                 break;
+            }
+
+            case 5:{
+
+                soma_total = lista[0][0] + lista[1][0] + lista[2][0];
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n");
+                printf("\n\t   O valor total das contas deste mês é de : RS %.2f\n",  soma_total);
+                
+                break;
+            }
+
+            default:{
+
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n");
+                printf("\n\t\t\t   Opição incorreta ! \n");
+                break;
+
             }
         
         }
@@ -625,6 +661,15 @@ void patrocinadores (){
             }
             break;
             }
+
+        default:{
+
+            system("cls");
+            printf("\n | ---------------------------------------------------------------------|\n");
+            printf("\n\t\t\t   Opição incorreta ! \n");
+            break;
+
+            }
         }
 
    }while ( opi != 0 );
@@ -673,6 +718,15 @@ void Fornecedores (){
             }
             break;
             }
+
+        default:{
+
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n");
+                printf("\n\t\t\t   Opição incorreta ! \n");
+                break;
+
+            }
         }
    }while ( opi != 0 );
 
@@ -684,11 +738,21 @@ void Fornecedores (){
 
 void cria_lista( int *fim ){
 
-    system("cls");
-    *fim = 0;    
-    printf("\n | ---------------------------------------------------------------------|\n ");
-    printf( "\n\t\t\t      Lista criada!\n" );
-    getchar();
+    if (*fim != 0){
+
+        system("cls");
+        *fim = 0;    
+        printf("\n | ---------------------------------------------------------------------|\n ");
+        printf( "\n\t\t\t      Lista criada!\n" );
+        getchar();
+
+            }else{
+
+                system("cls");
+                printf("\n | ---------------------------------------------------------------------|\n ");
+                printf( "\n\t\t\t      Lista já criada!\n" );
+
+            }
 }
 
 void entrada_Patrocinadores( PATROCINADOR *aux ){
@@ -697,9 +761,9 @@ void entrada_Patrocinadores( PATROCINADOR *aux ){
     printf("\n | Informe o nome do patrocinador: ");
     fflush( stdin );
     gets( aux->nome );
-    printf("\n | Digite o valor que vai sé fornecido pelo de patrocinador: ");
+    printf("\n | Digite o valor do recurso financeiro que será fornecido: ");
     fflush( stdin );     
-    scanf( "%d", &aux-> money );
+    scanf( "%f", &aux-> money );
 }
 
 void inclui_lista( NODO *lista ){
@@ -736,7 +800,7 @@ void imprime_lista( NODO lista ){
         printf("\n | ----------------------------- Lista ---------------------------------|\n ");
 	    for( i = 0 ; i < lista.f ; i++ ) { 
 	         printf( "\n\t\t     Patrocinador: %s", lista.info[ i ].nome );
-             printf( "     Valor: R$ %d\n", lista.info[ i ].money );
+             printf( "     Valor: R$ %.2f\n", lista.info[ i ].money );
              
 	    }
     }    
@@ -760,10 +824,11 @@ void consulta_nome( NODO lista ){
             system("cls");
             printf("\n | ---------------------------------------------------------------------|\n ");
 	        printf( "\n\t\t     Nome: %s", lista.info[ i ].nome );
-            printf( "\t Valor: R$ %d\n", lista.info[ i ].money );
+            printf( "\t Valor: R$ %.2f\n", lista.info[ i ].money );
         }
 
     }   
+
 
 
 // Funçóes relacionadas a banbo de Patrocinadores em pilha - fornecedores
